@@ -2,6 +2,8 @@ import React from 'react'
 import { Card} from '../UI/Card';
 // import ErrorModal from '../UI/ErrorModal';
 import classes from './UsersList.module.css';
+import { UserListItem} from './UserListItem'
+
 
 export const UsersList = (props) => {
     return (
@@ -10,9 +12,14 @@ export const UsersList = (props) => {
         <Card className={classes.users}>
             <ul>
                 {props.users.map((user) => (
-                    <li key={user.id}>
+                    <UserListItem 
+                    key={user.id}
+                    id={user.id}
+                    onDelete={props.onDeleteItem}
+                    >
                         {user.name} ({user.age} years old)
-                    </li>
+                    </UserListItem>
+                
                 ))}
             </ul>
         </Card>
